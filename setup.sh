@@ -31,3 +31,5 @@ $sudo $dockercmd run --name ec2metadata -e RACK_ENV=production \
   -v `ls -d ${AWS_PROFILE_PATH:-~/.aws}`:/root/.aws \
   -e MYNAME \
   ${image:-farrellit/ec2metadata:latest}
+
+echo "Go to http://169.254.169.254 to select a role"
