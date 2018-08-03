@@ -6,7 +6,7 @@
   </form>
 
   <div id='assumerole'>
-  <form method='POST' action='/authenticate'>
+  <form name='assume_role_form' method='POST' action='/authenticate'>
   <!--
   <h2>Requesters</h2>
   <select name='requester'>
@@ -19,12 +19,7 @@
   <table>
     <tr>
       <td>Role</td>
-      <td><input name='role' list='roles' style="width: 500px;" autocomplete="off">
-      <datalist id='roles'>
-      <% roles.each do |role|
-        %><option value='<%= role %>'><%= role.gsub(/.*:role\//, '' ) %></option>
-      <% end %>
-      </datalist></td>
+      <td><input name='role' style="width: 500px;" autocomplete="off">
     </tr>
       <td>MFA Device
       </td>
@@ -59,7 +54,7 @@
       <td>Auto-Refresh Credentials</td>
       <td>
         <% if profile_auth[current_profile] and not profile_auth[current_profile].empty? %>
-        <input type='checkbox' name='autorefresh' title="check to enable auto-refreshing of the role when it exipres" /> 
+        <input type='checkbox' name='autorefresh' checked='true' title="check to enable auto-refreshing of the role when it exipres" /> 
         <% else %>
           <em>Proved an MFA token at profile selection time to allow auto-refreshing credentials</em>
         <% end %>
@@ -70,11 +65,11 @@
   </form>
 
   <ul>
-    <li>arn:aws:iam::056684691971:role/CP/CPT2</li>
-    <li>arn:aws:iam::056684691971:role/app/dev-mna-api-ecs-service-TaskRole-MITLCY6GV6UA</li>
-    <li>arn:aws:iam::056684691971:role/app/dev-platform-admin-ecs-service-TaskRole-S1VYLH1NCEAW</li>
-    <li>Dev - arn:aws:iam::056684691971:role/id/IDT2Role</li>
-    <li>Prod - arn:aws:iam::104966627370:role/id/IDT2Role</li>
+    <li><a onclick="$('input[name=role]').val('arn:aws:iam::056684691971:role/CP/CPT2'); document.forms['assume_role_form'].submit();">arn:aws:iam::056684691971:role/CP/CPT2</a></li>
+    <li><a onclick="$('input[name=role]').val('arn:aws:iam::056684691971:role/app/dev-mna-api-ecs-service-TaskRole-MITLCY6GV6UA'); document.forms['assume_role_form'].submit();">arn:aws:iam::056684691971:role/app/dev-mna-api-ecs-service-TaskRole-MITLCY6GV6UA</a></li>
+    <li><a onclick="$('input[name=role]').val('arn:aws:iam::056684691971:role/app/dev-platform-admin-ecs-service-TaskRole-S1VYLH1NCEAW'); document.forms['assume_role_form'].submit();">arn:aws:iam::056684691971:role/app/dev-platform-admin-ecs-service-TaskRole-S1VYLH1NCEAW</a></li>
+    <li><a onclick="$('input[name=role]').val('arn:aws:iam::056684691971:role/id/IDT2Role'); document.forms['assume_role_form'].submit();">Dev - arn:aws:iam::056684691971:role/id/IDT2Role</a></li>
+    <li><a onclick="$('input[name=role]').val('arn:aws:iam::104966627370:role/id/IDT2Role'); document.forms['assume_role_form'].submit();">Prod - arn:aws:iam::104966627370:role/id/IDT2Role</a></li>
   </ul>
 
   </div>
