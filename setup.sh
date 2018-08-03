@@ -2,6 +2,9 @@
 
 MYNAME=`whoami`@`hostname`
 
+# use local image with my changes
+image=ec2metadata
+
 LOCALIP='169.254.169.254'
 
 if [ "`id -u`" == "0" ]; then

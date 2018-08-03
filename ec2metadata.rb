@@ -349,7 +349,7 @@ post '/profile' do
   elsif profiles.include? params[:profile]
     puts params.inspect
     current_profile = params[:profile]
-    discover_profile_data.call( params[:profile_mfa], params[:profile_mfa_time], ( params[:listroles] == 'on') )
+    discover_profile_data.call( params[:profile_mfa], params[:profile_mfa_time], false )
     redirect '/', 303 
   else
     status 404
